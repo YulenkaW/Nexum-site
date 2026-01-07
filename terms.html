@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Use — Nexum</title>
+  <meta name="robots" content="index,follow" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#0b1220" id="themeColor" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="./index.html" aria-label="Nexum home">
+      <div class="mark" aria-hidden="true"></div>
+      <div>
+        <strong>Nexum</strong>
+        <span>Practical Technology Consulting</span>
+      </div>
+    </a>
+    <div class="right">
+      <button class="themeBtn" id="themeToggle" type="button" aria-label="Toggle theme">
+        <span class="dot" aria-hidden="true"></span>
+        Theme
+      </button>
+      <a class="chip" href="./index.html#contact">
+        <span class="dot" aria-hidden="true"></span>
+        Contact
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" style="padding: 34px 0 60px;">
+  <div class="section-head">
+    <div>
+      <h2>Terms of Use</h2>
+      <p class="sub">Effective date: <span id="effective"></span></p>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <p class="muted m0">
+      This website provides general information about Nexum and its services. By using this site, you agree to these terms.
+    </p>
+
+    <div class="hr"></div>
+
+    <h3 style="margin:0 0 8px; font-size:16px;">No guarantees</h3>
+    <p class="muted m0">
+      Content is provided “as is” for informational purposes. Any outcomes depend on your context, constraints, and implementation choices.
+    </p>
+
+    <h3 style="margin:16px 0 8px; font-size:16px;">No legal or compliance advice</h3>
+    <p class="muted m0">
+      Nexum does not provide legal, regulatory, or tax advice. If your project requires specialized counsel, consult appropriate professionals.
+    </p>
+
+    <h3 style="margin:16px 0 8px; font-size:16px;">Intellectual property</h3>
+    <p class="muted m0">
+      Site content, brand elements, and materials are owned by Nexum unless stated otherwise. You may not reuse or redistribute without permission.
+    </p>
+
+    <h3 style="margin:16px 0 8px; font-size:16px;">Contact</h3>
+    <p class="muted m0">
+      Questions? Email <a class="link" style="display:inline-flex; padding:6px 10px; margin-left:6px;" href="mailto:you@yourdomain.com">you@yourdomain.com</a>
+    </p>
+  </div>
+
+  <p class="muted footerline">© <span id="y"></span> Nexum.</p>
+</main>
+
+<script src="./script.js" defer></script>
+<script>
+  document.getElementById("effective").textContent = new Date().toLocaleDateString();
+</script>
+</body>
+</html>
