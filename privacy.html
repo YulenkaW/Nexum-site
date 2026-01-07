@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Nexum</title>
+  <meta name="robots" content="index,follow" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#0b1220" id="themeColor" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="./index.html" aria-label="Nexum home">
+      <div class="mark" aria-hidden="true"></div>
+      <div>
+        <strong>Nexum</strong>
+        <span>Practical Technology Consulting</span>
+      </div>
+    </a>
+    <div class="right">
+      <button class="themeBtn" id="themeToggle" type="button" aria-label="Toggle theme">
+        <span class="dot" aria-hidden="true"></span>
+        Theme
+      </button>
+      <a class="chip" href="./index.html#contact">
+        <span class="dot" aria-hidden="true"></span>
+        Contact
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" style="padding: 34px 0 60px;">
+  <div class="section-head">
+    <div>
+      <h2>Privacy Policy</h2>
+      <p class="sub">Effective date: <span id="effective"></span></p>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <p class="muted m0">
+      Nexum respects your privacy. This site is a simple informational website. We do not sell personal information.
+    </p>
+
+    <div class="hr"></div>
+
+    <h3 style="margin:0 0 8px; font-size:16px;">Information we collect</h3>
+    <ul class="bullets mt0">
+      <li><strong>Messages you send:</strong> If you email us, we receive your email address and whatever you include in your message.</li>
+      <li><strong>Basic analytics (optional):</strong> If we later enable analytics, it will be used only to understand aggregate traffic and improve the site.</li>
+    </ul>
+
+    <h3 style="margin:16px 0 8px; font-size:16px;">How we use information</h3>
+    <ul class="bullets mt0">
+      <li>To respond to inquiries</li>
+      <li>To evaluate fit for potential work</li>
+      <li>To improve site content and clarity</li>
+    </ul>
+
+    <h3 style="margin:16px 0 8px; font-size:16px;">Cookies</h3>
+    <p class="muted m0">
+      This site does not use tracking cookies by default. A small local storage setting may be used to remember theme preference (light/dark/auto) in your browser.
+    </p>
+
+    <h3 style="margin:16px 0 8px; font-size:16px;">Contact</h3>
+    <p class="muted m0">
+      Questions? Email <a class="link" style="display:inline-flex; padding:6px 10px; margin-left:6px;" href="mailto:you@yourdomain.com">you@yourdomain.com</a>
+    </p>
+  </div>
+
+  <p class="muted footerline">© <span id="y"></span> Nexum.</p>
+</main>
+
+<script src="./script.js" defer></script>
+<script>
+  // lightweight effective date (today)
+  document.getElementById("effective").textContent = new Date().toLocaleDateString();
+</script>
+</body>
+</html>
