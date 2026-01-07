@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nexum — Practical Technology Consulting</title>
+  <meta name="description" content="Practical technology consulting for companies moving carefully. Clarity, risk reduction, speed, realistic execution." />
+  <meta name="theme-color" content="#0b1220" />
+
+  <!-- Simple system font stack (fast, premium, no external dependencies) -->
+  <style>
+    :root{
+      --bg: #0b1220;
+      --bg-2: #0e172a;
+      --panel: rgba(255,255,255,0.06);
+      --panel-2: rgba(255,255,255,0.09);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --faint: rgba(255,255,255,0.56);
+      --line: rgba(255,255,255,0.14);
+      --shadow: 0 16px 50px rgba(0,0,0,0.45);
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.30);
+      --radius: 18px;
+      --radius-sm: 14px;
+      --max: 1120px;
+
+      /* Accent is subtle by design (premium consulting vibe) */
+      --accent: rgba(160,210,255,0.95);
+      --accent-2: rgba(192,255,232,0.90);
+      --focus: rgba(160,210,255,0.55);
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1100px 700px at 20% 0%, rgba(160,210,255,0.18), transparent 55%),
+                  radial-gradient(900px 600px at 85% 8%, rgba(192,255,232,0.10), transparent 55%),
+                  linear-gradient(180deg, var(--bg), var(--bg-2) 60%, #070d18 100%);
+      color: var(--text);
+      line-height: 1.55;
+      letter-spacing: -0.01em;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible{
+      outline: 2px solid var(--focus);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 22px; }
+    .row{ display:flex; gap: 18px; }
+    .grid{
+      display:grid;
+      gap: 18px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(7, 13, 24, 0.60);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 170px;
+    }
+    .mark{
+      width: 34px; height: 34px;
+      border-radius: 11px;
+      background:
+        radial-gradient(16px 16px at 30% 30%, rgba(255,255,255,0.20), transparent 55%),
+        linear-gradient(135deg, rgba(160,210,255,0.40), rgba(192,255,232,0.22));
+      border: 1px solid rgba(255,255,255,0.20);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    }
+    .brand strong{
+      font-size: 15px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .brand span{
+      display:block;
+      font-size: 12px;
+      color: var(--faint);
+      margin-top: 1px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    nav ul{
+      list-style:none; margin:0; padding:0;
+      display:flex; gap: 14px;
+      align-items:center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a{
+      font-size: 13px;
+      color: var(--muted);
+      padding: 9px 10px;
+      border-radius: 10px;
+      transition: background 160ms ease, color 160ms ease;
+    }
+    nav a:hover{
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.90);
+    }
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      box-shadow: var(--shadow-soft);
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+      white-space: nowrap;
+      font-size: 13px;
+      color: rgba(255,255,255,0.92);
+    }
+    .cta:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.26);
+    }
+    .dot{
+      width: 8px; height: 8px; border-radius: 99px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(160,210,255,0.12);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 56px 0 18px;
+    }
+    .hero-card{
+      border-radius: calc(var(--radius) + 6px);
+      border: 1px solid rgba(255,255,255,0.12);
+      background:
+        radial-gradient(700px 350px at 20% 0%, rgba(160,210,255,0.12), transparent 60%),
+        radial-gradient(600px 300px at 90% 20%, rgba(192,255,232,0.08), transparent 60%),
+        rgba(255,255,255,0.04);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 34px;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.02em;
+    }
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+    .lead{
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 74ch;
+    }
+    .hero-actions{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.92);
+      font-size: 14px;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.26);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(160,210,255,0.22), rgba(192,255,232,0.14));
+      border-color: rgba(160,210,255,0.30);
+    }
+
+    /* Sections */
+    section{ padding: 34px 0; }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    h2{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.86);
+    }
+    .sub{
+      margin: 0;
+      color: var(--faint);
+      font-size: 13px;
+      max-width: 70ch;
+    }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.045);
+      box-shadow: var(--shadow-soft);
+      padding: 18px;
+    }
+    .card.soft{
+      background: rgba(255,255,255,0.035);
+    }
+
+    .bullets{
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .bullets li{ margin: 6px 0; }
+
+    .pillars{
+      display:grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+    .pillar h3{
+      margin: 0 0 6px;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+    }
+    .pillar p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Services */
+    .tiers{
+      display:grid;
+      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      align-items: stretch;
+    }
+    .tier{
+      position: relative;
+      overflow: hidden;
+    }
+    .tier .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+    .tier h3{
+      margin: 12px 0 6px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .tier .desc{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .tier .label{
+      margin-top: 14px;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+    }
+    .tier .outcome{
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .tier:before{
+      content:"";
+      position:absolute;
+      inset: -80px -60px auto auto;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle at 30% 30%, rgba(160,210,255,0.16), transparent 60%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+
+    /* Two-column text blocks */
+    .two{
+      display:grid;
+      gap: 18px;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: start;
+    }
+
+    .steps{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .steps li{ margin: 8px 0; }
+
+    /* Footer / Contact */
+    footer{
+      padding: 34px 0 50px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.10);
+    }
+    .contact{
+      display:grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .contact p{ margin: 0; color: var(--muted); }
+    .contact .links{
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .link{
+      display:inline-flex;
+      gap: 10px;
+      align-items:center;
+      padding: 11px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.90);
+      font-size: 14px;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+    .link:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.20);
+    }
+
+    /* Small details */
+    .muted{ color: var(--muted); }
+    .hr{
+      height: 1px;
+      background: rgba(255,255,255,0.10);
+      margin: 18px 0;
+    }
+
+    /* Reveal animation (optional, tasteful) */
+    .reveal{
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 420ms ease, transform 420ms ease;
+      will-change: opacity, transform;
+    }
+    .reveal.in{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .tiers{ grid-template-columns: 1fr; }
+      .pillars{ grid-template-columns: 1fr; }
+      .two{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      nav ul{ display:none; } /* keep header calm on mobile */
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Nexum home">
+      <div class="mark" aria-hidden="true"></div>
+      <div>
+        <strong>Nexum</strong>
+        <span>Practical Technology Consulting</span>
+      </div>
+    </a>
+
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#who">Who</a></li>
+        <li><a href="#what">What</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how">How</a></li>
+        <li><a href="#why">Why</a></li>
+      </ul>
+    </nav>
+
+    <a class="cta" href="#contact">
+      <span class="dot" aria-hidden="true"></span>
+      Contact
+    </a>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-card reveal">
+      <div class="kicker">
+        <span class="dot" aria-hidden="true"></span>
+        Vendor-neutral • Risk-aware • Architecture-first
+      </div>
+
+      <h1>Practical Technology Consulting for Companies Moving Carefully</h1>
+      <p class="lead">We help organizations introduce advanced technology — including AI — without hype, lock-in, or unnecessary risk.</p>
+
+      <p class="lead" style="margin-top:12px;">
+        Nexum partners with companies that want clarity before commitment: from architecture and vendor selection to small, fast, production-ready solutions.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="#services">View services</a>
+        <a class="btn" href="#contact">Start a conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE WORK WITH -->
+  <section id="who">
+    <div class="section-head">
+      <div>
+        <h2>WHO WE WORK WITH</h2>
+        <p class="sub">Built for companies that</p>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <ul class="bullets">
+        <li>Want to explore AI or modern software but don’t know where to start</li>
+        <li>Don’t have in-house architecture or AI leadership</li>
+        <li>Need vendor-neutral guidance</li>
+        <li>Care about security, cost, and long-term maintainability</li>
+        <li>Prefer realistic progress over large transformations</li>
+      </ul>
+
+      <div class="hr"></div>
+      <p class="muted" style="margin:0;">We frequently work alongside internal IT teams, MSPs, and software vendors.</p>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section id="what">
+    <div class="section-head">
+      <div>
+        <h2>WHAT WE DO</h2>
+        <p class="sub">We focus on three things</p>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="card pillar reveal">
+        <h3>Clarity before building</h3>
+        <p>Reduce uncertainty early with practical constraints, architecture, and decisions that hold up later.</p>
+      </div>
+      <div class="card pillar reveal">
+        <h3>Small, controlled implementations</h3>
+        <p>Prove value with narrow scope and fast delivery — without committing to a platform prematurely.</p>
+      </div>
+      <div class="card pillar reveal">
+        <h3>Systems that fit your organization — not the other way around</h3>
+        <p>Design for maintainability, security, cost, and the realities of internal teams.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-head">
+      <div>
+        <h2>SERVICES</h2>
+        <p class="sub">Three tiers to match how carefully you want to move.</p>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <!-- Tier 1 -->
+      <article class="card tier reveal">
+        <div class="badge"><span class="dot" aria-hidden="true"></span> Tier 1</div>
+        <h3>Readiness &amp; Architecture</h3>
+        <p class="desc">A low-risk starting point designed to create clarity and reduce uncertainty.</p>
+
+        <div class="label">Includes</div>
+        <ul class="bullets">
+          <li>Review of existing systems, data, and workflows</li>
+          <li>Identification of realistic automation or AI opportunities</li>
+          <li>Architecture diagrams and integration approach</li>
+          <li>Build vs buy recommendations</li>
+          <li>Vendor and tooling guidance (vendor-neutral)</li>
+          <li>Security, compliance, and cost considerations</li>
+        </ul>
+
+        <div class="label">Outcome</div>
+        <div class="outcome">A clear, documented plan — or a clear decision not to proceed.</div>
+      </article>
+
+      <!-- Tier 2 -->
+      <article class="card tier reveal">
+        <div class="badge"><span class="dot" aria-hidden="true"></span> Tier 2</div>
+        <h3>Proof of Concept</h3>
+        <p class="desc">Small, focused solutions delivered quickly to validate value.</p>
+
+        <div class="label">Examples</div>
+        <ul class="bullets">
+          <li>Internal document search or knowledge assistant</li>
+          <li>Workflow automation or decision support</li>
+          <li>Data summarization or classification</li>
+          <li>Lightweight internal tools for teams</li>
+        </ul>
+
+        <div class="label">Principles</div>
+        <ul class="bullets">
+          <li>Narrow scope</li>
+          <li>Fast delivery</li>
+          <li>Human-in-the-loop</li>
+          <li>Easy to stop or evolve</li>
+        </ul>
+
+        <div class="label">Outcome</div>
+        <div class="outcome">A working solution that proves feasibility without long-term commitment.</div>
+      </article>
+
+      <!-- Tier 3 -->
+      <article class="card tier reveal">
+        <div class="badge"><span class="dot" aria-hidden="true"></span> Tier 3</div>
+        <h3>Implementation &amp; Integration</h3>
+        <p class="desc">Production-ready systems designed to last.</p>
+
+        <div class="label">Includes</div>
+        <ul class="bullets">
+          <li>Secure deployment (cloud or hybrid)</li>
+          <li>Integration with existing platforms and data</li>
+          <li>Monitoring, logging, and access controls</li>
+          <li>Documentation and handoff</li>
+          <li>Optional ongoing support</li>
+        </ul>
+
+        <div class="label">Outcome</div>
+        <div class="outcome">A maintainable system aligned with your internal capabilities.</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section id="how">
+    <div class="section-head">
+      <div>
+        <h2>HOW WE WORK</h2>
+        <p class="sub">A calm process that respects constraints and avoids lock-in.</p>
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="card reveal">
+        <ol class="steps">
+          <li>Intro conversation</li>
+          <li>Assessment and constraints definition</li>
+          <li>Recommendation or build</li>
+          <li>Delivery with documentation</li>
+          <li>Clean handoff</li>
+        </ol>
+
+        <div class="hr"></div>
+        <p class="muted" style="margin:0;">No long contracts. No forced platforms. No hype.</p>
+      </div>
+
+      <aside class="card soft reveal">
+        <h3 style="margin:0 0 8px; font-size:16px; letter-spacing:-0.01em;">Operating principles</h3>
+        <ul class="bullets" style="margin-top:0;">
+          <li>Clarity first</li>
+          <li>Small, reversible steps</li>
+          <li>Security and maintainability</li>
+          <li>Documentation by default</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- WHY NEXUM -->
+  <section id="why">
+    <div class="section-head">
+      <div>
+        <h2>WHY NEXUM</h2>
+        <p class="sub">We believe good technology decisions start with restraint.</p>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <ul class="bullets">
+        <li>Vendor-neutral</li>
+        <li>Architecture-first</li>
+        <li>Risk-aware</li>
+        <li>Designed for collaboration with internal teams</li>
+        <li>Focused on long-term maintainability</li>
+      </ul>
+
+      <div class="hr"></div>
+      <p class="muted" style="margin:0;">We believe good technology decisions start with restraint.</p>
+    </div>
+  </section>
+</main>
+
+<!-- CONTACT -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>CONTACT</h2>
+        <p class="sub">Let’s talk about whether this makes sense — before building anything.</p>
+      </div>
+    </div>
+
+    <div class="contact">
+      <div class="card reveal">
+        <p class="muted">
+          If you’re evaluating AI, automation, or modernization and want a calm, vendor-neutral approach, we’ll help you
+          clarify what’s realistic and what’s not — before you commit budget or stack.
+        </p>
+      </div>
+
+      <div class="links">
+        <a class="link reveal" href="mailto:you@yourdomain.com">
+          <span class="dot" aria-hidden="true"></span>
+          Email: you@yourdomain.com
+        </a>
+        <a class="link reveal" href="https://linkedin.com/in/yourname" target="_blank" rel="noreferrer">
+          <span class="dot" aria-hidden="true"></span>
+          LinkedIn: linkedin.com/in/yourname
+        </a>
+      </div>
+    </div>
+
+    <p class="muted" style="margin:18px 0 0; font-size:12px;">
+      © <span id="y"></span> Nexum. Vendor-neutral consulting. No lock-in.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Tiny, tasteful JS: reveal on scroll + current year.
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  const els = Array.from(document.querySelectorAll(".reveal"));
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add("in");
+        io.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.12 });
+
+  els.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
